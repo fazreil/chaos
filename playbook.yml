@@ -1,0 +1,8 @@
+---
+#playbook
+
+- hosts: localhost.vm
+  become: yes
+  become_method: sudo
+  roles:
+  - utils

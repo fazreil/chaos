@@ -1,0 +1,2 @@
+[devbox.vm]
+localhost         ansible_port=22     ansible_user=vagrant ansible_sudo=yes ansible_ssh_private_key_file=id_rsa ansible_ssh_passwd=vagrant

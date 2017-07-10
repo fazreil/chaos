@@ -1,0 +1,10 @@
+# main task for role
+- name: Install terminator
+  yum:
+    name: terminator
+    state: present
+
+- name: Install gparted
+  yum:
+    name: gparted
+    state: present
