@@ -1,0 +1,24 @@
+- name: Download libreOffice
+  command: wget https://www.libreoffice.org/donate/dl/rpm-x86/5.4.0/en-US/LibreOffice_5.4.0_Linux_x86_rpm.tar.gz 
+  args:
+    chdir: /tmp
+
+- name: unzip libreOffice
+  command: gunzip /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar.gz
+
+- name: untar libreOffice
+  command: tar -xvf /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar
+
+- name: install libreOffice
+  command: yum -y --nogpgcheck install /tmp/*.rpm
+
+- name: cleanup installation
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_item: [
+    /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar.gz,
+    /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar
+    /tmp/*.rpm
+  ]
+  
