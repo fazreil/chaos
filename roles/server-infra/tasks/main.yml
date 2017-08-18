@@ -1,2 +1,6 @@
+---
 # main task for role
-- name: 
+
+- include_vars: main.yml
+
+- include: jenkins.yml

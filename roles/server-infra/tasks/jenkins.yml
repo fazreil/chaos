@@ -1,0 +1,18 @@
+---
+
+- include_vars: main.yml
+
+- name: setup jenkins repo
+  command: "{{ item }}"
+  with_items: [
+    "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo",
+    "sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key"
+  ]
+
+- name: Install jenkins
+  yum:
+    name: "jenkins-{{ jenkins_version }}.noarch"
+    state: installed
+    nogpgcheck: yes
+  become: yes
+  become_method: sudo
