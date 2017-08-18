@@ -1,2 +1,8 @@
+- include_vars: main.yml
 # main task for role
-- name: 
+- name: Install common items
+  yum:
+    name: "{{ item }}"
+    state: installed
+    nogpgcheck: yes
+  with_items: "{{ common_packages }}"

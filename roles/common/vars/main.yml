@@ -1,1 +1,8 @@
+---
 # main variables definition
+
+common_packages: [
+  "epel-release.noarch",
+  "wget",
+  "gzip"
+]
