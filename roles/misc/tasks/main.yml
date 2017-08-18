@@ -1,2 +1,10 @@
+---
 # main task for role
-- name: 
+- include_vars: main.yml
+
+- name: Install miscelleneous packages
+  yum: 
+    name: "{{ item }}"
+    disable_gpg_check: yes
+    state: installed
+  with_items: "{{ misc_packages }}"
