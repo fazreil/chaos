@@ -4,5 +4,7 @@
   yum:
     name: "{{ item }}"
     state: installed
-    nogpgcheck: yes
+    disable_gpg_check: yes
   with_items: "{{ common_packages }}"
+  become: yes
+  become_method: sudo

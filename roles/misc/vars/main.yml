@@ -2,7 +2,7 @@
 # main variables definition
 
 misc_packages: [
-  "cowsay-3.04-5.fc26.noarch",
-  "mlocate-0.26-16.fc26.x86_64",
-  "tree-1.7.0-8.fc26.x86_64"
+  "cowsay.noarch",
+  "mlocate",
+  "tree"
 ]

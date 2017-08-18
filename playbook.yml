@@ -4,5 +4,9 @@
 - hosts: localhost.vm
   become: yes
   become_method: sudo
+  become_user: root
   roles:
+  - common
+  - gui
+  - misc
   - utils

@@ -3,8 +3,12 @@
   yum:
     name: terminator
     state: present
+  become: yes
+  become_method: sudo
 
 - name: Install gparted
   yum:
     name: gparted
     state: present
+  become: yes
+  become_method: sudo

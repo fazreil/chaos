@@ -8,11 +8,13 @@
     "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo",
     "sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key"
   ]
+  become: yes
+  become_method: sudo
 
 - name: Install jenkins
   yum:
     name: "jenkins-{{ jenkins_version }}.noarch"
     state: installed
-    nogpgcheck: yes
+    disable_gpg_check: yes
   become: yes
   become_method: sudo

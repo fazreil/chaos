@@ -8,3 +8,5 @@
     disable_gpg_check: yes
     state: installed
   with_items: "{{ misc_packages }}"
+  become: yes
+  become_method: sudo

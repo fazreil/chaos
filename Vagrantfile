@@ -68,16 +68,24 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-   config.vm.provision "shell" do |shell|
-     shell.inline = "yum install -y epel-release"
-   end
-   config.vm.provision "shell" do |shell|
-     shell.inline = "yum repolist"
-   end
-   config.vm.provision "shell" do |shell|  
-     shell.inline = "yum install -y ansible"
-   end
+   # config.vm.provision "shell" do |shell|
+   #   shell.inline = "yum install -y epel-release"
+   # end
+   # config.vm.provision "shell" do |shell|
+   #   shell.inline = "yum repolist"
+   # end
+   # config.vm.provision "shell" do |shell|  
+   #   shell.inline = "yum install -y ansible"
+   # end
    config.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbook.yml"
+      ansible.inventory_path = "hosts/localhost.vm"
+      ansible.limit = "all"
+      ansible.sudo_user = "vagrant"
+      ansible.verbose = true
+      ansible.extra_vars = {
+        ansible_ssh_pass: "vagrant",
+        ansible_sudo_pass: "vagrant"
+      }
    end
 end

@@ -4,12 +4,25 @@
 - name: install x11
   command: yum -y --nogpgcheck install {{ item }}
   with_items: "{{ x11 }}"
+  become: yes
+  become_method: sudo
 
 #- include: vbox_guest_add.yml
 
 - name: "Start GUI"
   command: "{{ item }}"
   become: yes
+  become_method: sudo
   with_items:
     - systemctl enable gdm.service
     - systemctl set-default graphical.target
+    - systemctl isolate graphical.target
+
+- name: "Install GUI packages"
+  yum:
+    name: "{{ item }}"
+    state: installed
+    disable_gpg_check: yes
+  become: yes
+  become_method: sudo
+  with_items: "{{ gui_packages }}"

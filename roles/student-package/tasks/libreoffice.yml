@@ -2,15 +2,23 @@
   command: wget https://www.libreoffice.org/donate/dl/rpm-x86/5.4.0/en-US/LibreOffice_5.4.0_Linux_x86_rpm.tar.gz 
   args:
     chdir: /tmp
+  become: yes
+  become_method: sudo
 
 - name: unzip libreOffice
   command: gunzip /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar.gz
+  become: yes
+  become_method: sudo
 
 - name: untar libreOffice
   command: tar -xvf /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar
+  become: yes
+  become_method: sudo
 
 - name: install libreOffice
   command: yum -y --nogpgcheck install /tmp/*.rpm
+  become: yes
+  become_method: sudo
 
 - name: cleanup installation
   file:
@@ -21,4 +29,6 @@
     /tmp/LibreOffice_5.4.0_Linux_x86_rpm.tar
     /tmp/*.rpm
   ]
+  become: yes
+  become_method: sudo
   
