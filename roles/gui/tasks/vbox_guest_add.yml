@@ -1,0 +1,11 @@
+---
+# installs virtualbox guest additions
+
+- include_vars: main.yml
+
+- name: "Mount VBGA iso"
+  mount: name=/mnt src="{{ vbox_guest_path }}" state=mounted fstype=iso9660 opts=loop
+
+- name: "Install VBGA package"
+  command: "/mnt/VBoxLinuxAdditions.run"
+  become: yes

@@ -1,2 +1,15 @@
 # main task for role
-- name: 
+- include_vars: main.yml
+
+- name: install x11
+  command: yum -y --nogpgcheck install {{ item }}
+  with_items: "{{ x11 }}"
+
+#- include: vbox_guest_add.yml
+
+- name: "Start GUI"
+  command: "{{ item }}"
+  become: yes
+  with_items:
+    - systemctl enable gdm.service
+    - systemctl set-default graphical.target

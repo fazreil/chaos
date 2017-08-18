@@ -1,1 +1,20 @@
+---
 # main variables definition
+
+x11: [
+    "@x11",
+    "gdm",
+    "xfce4-session",
+    "xfce4-panel",
+    "xfdesktop",
+    "xfwm4",
+    "xfce4-settings",
+    "xfce4-terminal"
+]
+
+gui_packages: [
+    "xterm",
+    "firefox"
+]
+
+vboxguest_path: "/var/tmp/vboxguestadditions.iso"
